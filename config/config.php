@@ -53,6 +53,11 @@
 						"action" => "?evaluateur&newGrille",
 						"icon" => "far fa-file-plus"
 					),
+					array(
+						"name" => "Classement",
+						"action" => "?evaluateur&classement",
+						"icon" => "far fa-list"
+					),
 				)
 			),
 		),
