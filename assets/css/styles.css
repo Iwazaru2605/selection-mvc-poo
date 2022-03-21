@@ -101,6 +101,7 @@ body {
 
 .ccontainer {
     margin: 50px;
+    margin-top: 15px;
     padding: 40px 100px;
     display: flex;
     background: white;

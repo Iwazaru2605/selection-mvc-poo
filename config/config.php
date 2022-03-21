@@ -35,53 +35,26 @@
 					),
 				)
 			),
-			// array(
-			// 	"name" => "Matières",
-			// 	"id" => "matieres&manageMatieres",
-			// 	"icon" => "fa fa-books"
-			// )	
 		),
         // Compte évaluateur
 		"evaluateur" => array(
 			array(
-				"name" => "Evaluations",
-				"id" => "questionnaire",
-				"icon" => "icon ion-ios-filing icon",
+				"name" => "Grilles",
+				"id" => "users",
+				"icon" => "fa fa-users",
 				"list" => array(
 					array(
-						"name" => "Gestion évaluations",
-						"action" => "?questionnaires&manageQuestionnaires"
+						"name" => "Gestion grilles",
+						"action" => "?login&evaluateur",
+						"icon" => "far fa-file"
 					),
 					array(
-						"name" => "Nouvelle évaluation",
-						"action" => "?questionnaires&newQuestionnaire"
+						"name" => "Nouvelle grille",
+						"action" => "?evaluateur&newGrille",
+						"icon" => "far fa-file-plus"
 					),
 				)
 			),
-			array(
-				"name" => "Evaluations publiés",
-				"id" => "questionnairePublished",
-				"icon" => "icon ion-ios-world-outline icon",
-				"list" => array(
-					array(
-						"name" => "Gestion questionnaires",
-						"action" => "?questionnaires&manageQuestionnairesPublished"
-					),
-					array(
-						"name" => "Actuellement publiées",
-						"action" => "?questionnaires&manageQuestionnairesPublishedActually"
-					),
-					array(
-						"name" => "Evaluation à corriger",
-						"action" => "?questionnaires&manageQuestionnairesPublishedFinished"
-					),
-				)
-			),
-			array(
-				"name" => "Matières",
-				"id" => "matieres&manageMatieres",
-				"icon" => "icon ion-ios-book icon"
-			)	
 		),
         // Compte secretaire
 		"secretaire" => array(
@@ -120,20 +93,10 @@
 			"account" => "admin",
 			"src" => "src/controller/adminHandler.php",
 		),
-		"questions" => array(
-			"name" => "Questions",
-			"account" => "teacher",
-			"src" => "src/c/questionsHandler.php",
-		),
-		"questionnaires" => array(
-			"name" => "Questionnaires",
-			"account" => NULL,
-			"src" => "src/c/questionnairesHandler.php",
-		),
-		"matieres" => array(
-			"name" => "Matières",
-			"account" => NULL,
-			"src" => "src/c/matieresManager.php"
+		"evaluateur" => array(
+			"name" => "evaluateur",
+			"account" => "evaluateur",
+			"src" => "src/controller/evaluateurHandler.php",
 		),
 	));
 ?>

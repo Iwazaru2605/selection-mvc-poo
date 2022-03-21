@@ -12,7 +12,7 @@
             $req->execute(array(
                 ":username" => $user->get("username"),
                 ":pwd" => $user->get("pwd"),
-                ":type" => $user->get("type") ?: "student"
+                ":type" => $user->get("type") ?: "evaluateur"
             ));
         }
 

@@ -27,6 +27,7 @@
                 if (isset($_GET["login"])) {
                     $listUsers = $list;
                     $randColors = array("009473", "00b38a", "09d0a4", "3fe9c2", "8BF1DA");
+                    include("src/controller/" . $value->get("type") . "Handler.php");
                     include("src/vue/home/" . $value->get("type") . ".php");
                 }
             }
