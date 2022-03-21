@@ -64,29 +64,17 @@
         // Compte secretaire
 		"secretaire" => array(
 			array(
-				"name" => "Liste des évaluations",
-				"id" => "evaluations",
-				"icon" => "icon ion-ios-filing icon",
+				"name" => "Grilles",
+				"id" => "users",
+				"icon" => "fa fa-users",
 				"list" => array(
 					array(
-						"name" => "Toutes les évaluations",
-						"action" => "?questionnaires&allQuestionnaires"
-					),
-					array(
-						"name" => "Evaluations à faire",
-						"action" => "?questionnaires&todoQuestionnaires"
-					),
-					array(
-						"name" => "Evaluations effectuées",
-						"action" => "?questionnaires&didQuestionnaires"
-					),
+						"name" => "Classement",
+						"action" => "?evaluateur&classement",
+						"icon" => "far fa-list"
+					)
 				)
 			),
-			array(
-				"name" => "Résultats",
-				"id" => "results",
-				"icon" => "icon ion-ios-filing icon"
-			)	
 		)
 	));
 
@@ -100,8 +88,13 @@
 		),
 		"evaluateur" => array(
 			"name" => "evaluateur",
-			"account" => "evaluateur",
+			"account" => NULL,
 			"src" => "src/controller/evaluateurHandler.php",
+		),
+		"secretaire" => array(
+			"name" => "evaluateur",
+			"account" => "secretaire",
+			"src" => "src/controller/secretaireHandler.php",
 		),
 	));
 ?>

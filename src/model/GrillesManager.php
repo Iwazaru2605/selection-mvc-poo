@@ -61,6 +61,17 @@
             return $grilles;
         }
 
+        // Récupération de la liste des grilles présents dans la base de donnée dans un classement
+        public function getListOrdered() {
+            $req = $this->db->query("SELECT * FROM grille WHERE etat_dossier = 'accepte' ORDER BY note_finale DESC");
+
+            while ($data = $req->fetch()) {
+                $grilles[] = new Grille($data);
+            }
+
+            return $grilles;
+        }
+
         // Modification d'une grille dans la base de donnée
         public function update(Grille $grille) {
             $req = $this->db->prepare("UPDATE grille SET numero_candidat = :numero_candidat, nom = :nom, prenom = :prenom, type_bac = :type_bac, serieux = :serieux, absence = :absence, attitude = :attitude, etude = :etude, avis_pp = :avis_pp, avis_proviseur = :avis_proviseur, lettre = :lettre, remarque = :remarque, etat_dossier = :etat_dossier, note_finale = :note_finale WHERE id_grille = :id");

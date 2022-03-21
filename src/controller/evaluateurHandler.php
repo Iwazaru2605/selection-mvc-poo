@@ -59,6 +59,51 @@
         $grille = new Grille(array("id_grille" => $_GET["id"]));
         $grillesManager->delete($grille);
         header("Location: index.php?login");
+    } elseif (isGet("downloadCSV")) {
+        $listGrilles = $grillesManager->getListOrdered();
+
+        $delimiter = ";"; 
+        $filename = "classement_" . date('Y-m-d') . ".csv"; 
+        
+        // Create a file pointer 
+        $f = fopen('php://memory', 'w'); 
+        
+        // Set column headers 
+        $fields = array("ID", "NUMERO_CANDIDAT", "NOM", "PRENOM", "TYPE_BAC", "SERIEUX", "ABSENCE", "ATTITUDE", "ETUDE", "AVIS_PP", "AVIS_PROVISEUR", "LETTRE_MOTIVATION", "REMARQUE", "ETAT_DOSSIER", "NOTE_FINALE"); 
+        fputcsv($f, $fields, $delimiter); 
+        
+        // Output each row of the data, format line as csv and write to file pointer 
+        foreach ($listGrilles as $grille) {
+            $lineData = array(
+                $grille->get("id_grille"),
+                $grille->get("numero_candidat"),
+                $grille->get("nom"),
+                $grille->get("prenom"),
+                $grille->get("type_bac"),
+                $grille->get("serieux"),
+                $grille->get("absence"),
+                $grille->get("attitude"),
+                $grille->get("etude"),
+                $grille->get("avis_pp"),
+                $grille->get("avis_proviseur"),
+                $grille->get("lettre"),
+                $grille->get("remarque"),
+                $grille->get("etat_dossier"),
+                $grille->get("note_finale")
+            ); 
+            fputcsv($f, $lineData, $delimiter); 
+        } 
+        
+        // Move back to beginning of file 
+        fseek($f, 0); 
+        
+        // Set headers to download file rather than displayed 
+        header('Content-Type: text/csv'); 
+        header('Content-Disposition: attachment; filename="' . $filename . '";'); 
+        
+        //output all remaining data on a file pointer 
+        fpassthru($f); 
+        exit; 
     }
 
     // Vues
@@ -77,5 +122,10 @@
         $grille = $grillesManager->get($rawGrille);
 
         include("src/vue/evaluateur/newGrille.php");
+    } elseif (isGet("classement")) {
+        // Classement de grille
+        $listGrilles = $grillesManager->getListOrdered();
+
+        include("src/vue/evaluateur/classement.php");
     }
 ?>
