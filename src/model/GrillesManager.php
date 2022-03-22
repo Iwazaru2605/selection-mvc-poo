@@ -8,6 +8,8 @@
         
         // Ajout d'une grille dans la base de donnée
         public function add(Grille $grille) {
+            $grille->calcnote();
+            
             $req = $this->db->prepare("INSERT INTO grille(numero_candidat, nom, prenom, type_bac, serieux, absence, attitude, etude, avis_pp, avis_proviseur, lettre, remarque, etat_dossier, note_finale )
             VALUES (:numero_candidat, :nom, :prenom, :type_bac, :serieux, :absence, :attitude, :etude, :avis_pp, :avis_proviseur, :lettre, :remarque, :etat_dossier, :note_finale)");
             $req->execute(array(
@@ -74,6 +76,7 @@
 
         // Modification d'une grille dans la base de donnée
         public function update(Grille $grille) {
+            $grille->calcnote();
             $req = $this->db->prepare("UPDATE grille SET numero_candidat = :numero_candidat, nom = :nom, prenom = :prenom, type_bac = :type_bac, serieux = :serieux, absence = :absence, attitude = :attitude, etude = :etude, avis_pp = :avis_pp, avis_proviseur = :avis_proviseur, lettre = :lettre, remarque = :remarque, etat_dossier = :etat_dossier, note_finale = :note_finale WHERE id_grille = :id");
 
             $req->execute(array(

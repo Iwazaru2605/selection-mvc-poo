@@ -97,4 +97,49 @@
 			"src" => "src/controller/secretaireHandler.php",
 		),
 	));
+
+	// Définition barème pour les points
+	define("POINTS", array(
+		"type_bac" => array(
+			"pro" => 8,
+			"es" => 12,
+			"l" => 9,
+			"stmg" => 10,
+			"autre" => 5,
+		),
+		"serieux" => array(
+			"serieux-yes" => 1,
+			"serieux-no" => -1
+		),
+		"absence" => array(
+			"absence-yes" => -1,
+			"absence-no" => 1
+		),
+		"attitude" => array(
+			"attitude-yes" => 0,
+			"attitude-no" => 1
+		),
+		"etude" => array(
+			"etude-yes" => 1,
+			"etude-no" => 0
+		),
+		"lettre" => array(
+			"bien" => 2,
+			"assez_bien" => 1,
+			"insuffisant" => -1,
+			"negatif" => -2,
+		),
+		"avis_pp" => array(
+			"bien" => 2,
+			"assez_bien" => 1,
+			"insuffisant" => -1,
+			"negatif" => -2,
+		),
+		"avis_proviseur" => array(
+			"bien" => 2,
+			"assez_bien" => 1,
+			"insuffisant" => -1,
+			"negatif" => -2,
+		),
+	));
 ?>

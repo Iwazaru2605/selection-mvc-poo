@@ -29,6 +29,8 @@ Class Grille {
         foreach ($data as $key => $value) {
             $this->set($key, $value);
         }
+
+        $this->calcnote();
     }
 
     // Setter
@@ -39,7 +41,25 @@ Class Grille {
     // Getter
     public function get($key) {
         return $this->$key;
-    }    
+    }   
+    
+    // Functions
+    public function calcnote() {
+        // Calcul automatique de la note finale
+        $note_finale = 0;
+        foreach (POINTS as $k => $point) {
+            if (!is_null($this->get($k))) {
+                foreach($point as $lbl => $value) {
+                    if ($this->get($k) == $lbl) {
+                        $note_finale = $note_finale + $value;
+                    }
+                }
+            }
+        }
+
+        $this->set("note_finale" ,$note_finale);
+        return $note_finale;
+    }
 }
 
 ?>

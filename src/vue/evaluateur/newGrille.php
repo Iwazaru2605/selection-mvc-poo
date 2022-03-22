@@ -134,13 +134,14 @@
         <br>
 
         <div class="center">
-            <h3>Note finale</h3>
+            <h3>Etat du dossier</h3>
+            <h6>La note finale sera calculée automatiquement lors de la sauvegarde de la grille d'évaluation.</h6>
         </div>
 
-        <div>
+        <!-- <div>
             <label class="form-label">Note finale</label>
             <input <?php if (isset($grille)) { ?> value="<?php echo $grille->get("note_finale"); ?>" <?php } ?> required name="note_finale" class="form-control" type="number" min="0" max="20" placeholder="Note finale" />
-        </div>
+        </div> -->
 
         <div>
             <label class="form-label">Etat du dossier</label>
