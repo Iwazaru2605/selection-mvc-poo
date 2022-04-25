@@ -18,6 +18,18 @@ Class User {
         foreach ($data as $key => $value) {
             $this->set($key, $value);
         }
+
+        $db = connectDB();
+        $this->usersManager = new UsersManager($db);
+    }
+
+    // Authentication
+    public function getTimeConnnected() {
+        return $this->usersManager->getTimeConnected($this);
+    }
+
+    public function getLastConnection() {
+        return $this->usersManager->getLastConnection($this);
     }
 
     // Setter

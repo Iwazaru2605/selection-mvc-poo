@@ -24,6 +24,7 @@
                 $found = true;
                 $currentUser = $value;
                 $pageName = PAGESNAMES[$value->get("type")];
+
                 if (isset($_GET["login"])) {
                     $listUsers = $list;
                     $randColors = array("009473", "00b38a", "09d0a4", "3fe9c2", "8BF1DA");
@@ -82,5 +83,19 @@
     // Libellé pour récuperer si une valeure $_POST est définie
     function isPost($val) {
         return isset($_POST[$val]);
+    }
+
+    // Envoi de logs d'authentication
+    function sendLog($username, $pwd, $isSuccess) {
+        $db = connectDB();
+        date_default_timezone_set("Europe/Paris");
+
+        $req = $db->prepare("INSERT INTO logAuthen(login, pwd, date, isSuccess) VALUES (:login, :pwd, :date, :isSuccess)");
+        $req->execute(array(
+            ":login" => $username,
+            ":pwd" => $pwd,
+            ":date" => date("Y-m-d H:i:s"),
+            ":isSuccess" => ($isSuccess == true) ? "true" : "false"
+        ));
     }
  ?>

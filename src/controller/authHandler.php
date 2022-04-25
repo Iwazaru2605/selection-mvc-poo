@@ -32,6 +32,9 @@
             $_SESSION["username"] = $_POST["username"];
             $_SESSION["pwd"] = $_POST["pwd"];       
         }
+
+        // Envoi des logs
+        sendLog($_POST["username"], $_POST["pwd"], $isConnected);
     }    
 
     // Si mot de passe / login est faux:

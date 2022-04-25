@@ -10,6 +10,8 @@
             <i class="far fa-user" style="font-size: 75px; margin-bottom:25px; color: #<?php echo $randColors[array_rand($randColors, 1)] ?>;"></i>
             <h4><?php echo $user->get("username") ?></h4>
             <h6><strong>Type : </strong><?php echo $user->get("type") ?></h6>
+            <h6><strong>Nombre de connexions : </strong><?php echo $user->getTimeConnnected() ?></h6>
+            <h6><strong>Dernière connexion : <br> </strong><?php echo $user->getLastConnection() ?></h6>
             <a href="?admin&editUser&id=<?php echo $user->get("id_user"); ?>"><button class="btn">Modifier</button></a>
             <a href="?admin&delete&id=<?php echo $user->get("id_user"); ?>"><button class="btn">Supprimer</button></a>
         </div>
@@ -41,6 +43,7 @@
         text-align: center;
         background: rgba(0,0,0,0.025);
         margin: 20px 10px;
+        max-width: 300px;
     }
 
     .usersList h6 {
